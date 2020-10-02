@@ -15,5 +15,13 @@ class SessionsController < ApplicationController
                 error: 'Incorrect email or password'
             }
         end 
+    end
+    
+    def logout
+        reset_session
+        render json: {
+            status: 200,
+            logged_in: false
+        }
     end 
 end 
