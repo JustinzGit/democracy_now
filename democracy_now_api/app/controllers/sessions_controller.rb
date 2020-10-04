@@ -23,5 +23,18 @@ class SessionsController < ApplicationController
             status: 200,
             logged_in: false
         }
+    end
+
+    def current_login
+        if logged_in?
+            render json: {
+                logged_in: true,
+                user: current_user
+            }
+        else
+            render json: {
+                logged_in: false
+            }
+        end
     end 
 end 
