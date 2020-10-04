@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Dashboard from './components/Dashboard';
 import Home from './components/Home'
 
@@ -8,32 +8,34 @@ class App extends Component {
     super()
 
     this.state = {
-      loggedInStatus: "Not Logged In",
+      loggedInStatus: false,
       user: {}
     }
   }
 
   handleLogin = (userData) => {
     this.setState({
-      loggedInStatus: "Logged In",
+      loggedInStatus: true,
       user: userData
     })
   }
 
   handleLogout = () => {
-    this.setState({loggedInStatus: "Not Logged In", user: {}})
+    this.setState({
+      loggedInStatus: false, 
+      user: {}
+    })
   }
 
   loggedInStatus = () => {
     fetch("http://localhost:3001/current_login", {credentials: "include"})
     .then(response => response.json())
-    .then(railsResp => {
-      if (railsResp.logged_in && this.state.loggedInStatus === "Not Logged In"){
-        console.log("Logged In Status", railsResp)
-        this.setState({ loggedInStatus: "Logged In", user: railsResp.user})
+    .then(apiData => {
+      if (apiData.logged_in && !this.state.loggedInStatus){ 
+        this.setState({ loggedInStatus: true, user: apiData.user})
       }
-      else if (!railsResp.logged_in && this.state.loggedInStatus === "Logged In"){
-        this.setState({ loggedInStatus: "Not Logged In", user: {}})
+      else if (!apiData.logged_in && this.state.loggedInStatus){
+        this.setState({ loggedInStatus: false, user: {}})
       }
     })
   }
@@ -45,17 +47,18 @@ class App extends Component {
   render(){
     return (
       <div className="app">
-        <Router>
+        <Route 
+          exact path={'/'} 
+          render={props => (
+            <Home {...props} 
+            handleLogin={this.handleLogin} 
+            handleLogout={this.handleLogout} 
+            loggedInStatus={this.state.loggedInStatus} />)
+          }/>
 
-          <Route 
-            exact path={'/'} 
-            render={props => (<Home {...props} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedInStatus={this.state.loggedInStatus} />)}/>
-
-          <Route 
-            exact path={'/dashboard'} 
-            render={props => (<Dashboard {...props} loggedInStatus={this.state.loggedInStatus} />)}/>
-  
-        </Router>
+        <Route 
+          exact path={'/dashboard'} 
+          render={props => (<Dashboard {...props} loggedInStatus={this.state.loggedInStatus} />)}/>
       </div>
     );
   }
