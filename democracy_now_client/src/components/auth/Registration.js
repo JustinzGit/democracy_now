@@ -17,6 +17,7 @@ class Registration extends Component {
         event.preventDefault()
         fetch("http://localhost:3001/users", {
             method: "POST",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
@@ -25,7 +26,13 @@ class Registration extends Component {
         })
         .then(response => response.json())
         .then(railsResp => {
-            console.log("Registration Response", railsResp)
+            if (railsResp.status === 500 ){
+                // populate error message in state
+                console.log(railsResp.error)
+            }
+            else {
+                this.props.handleAuth(railsResp.user)
+            }
         })
         .catch(error => {
             console.log("Registration Error", error)
