@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-class Registration extends Component {
+class Signup extends Component {
 
     state = {
         email: "",
@@ -35,7 +35,7 @@ class Registration extends Component {
             }
         })
         .catch(error => {
-            console.log("Registration Error", error)
+            console.log("Signup Error", error)
         })
     }
 
@@ -78,4 +78,4 @@ class Registration extends Component {
     }
 }
 
-export default Registration
+export default Signup
