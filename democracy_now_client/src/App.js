@@ -51,7 +51,9 @@ class App extends Component {
     return (
       <div className="app">
 
-        <Route exact path={'/login'} component={Login}/>
+        <Route 
+          exact path={'/login'} 
+          render={props => (<Login {...props} handleLogin={this.handleLogin}/>)}/>
 
         <Route 
           exact path={'/dashboard'} 
@@ -60,8 +62,7 @@ class App extends Component {
         <PrivateRoute 
           exact path={'/'} 
           component={Home}
-          loggedInStatus={this.state.loggedInStatus}
-        />
+          loggedInStatus={this.state.loggedInStatus} />
 
         {/* <Route 
           exact path={'/'} 

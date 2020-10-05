@@ -19,10 +19,9 @@ class Login extends Component {
             body: JSON.stringify(this.state)
         })
         .then(response => response.json())
-        .then(railsResp => {
-            if (railsResp.status === 201){
-                console.log("Login Response", railsResp)
-                this.props.handleAuth(railsResp.user)
+        .then(apiData => {
+            if (apiData.status === 201){
+                this.props.handleLogin(apiData.user)
             }
         })
         .catch(error => {
