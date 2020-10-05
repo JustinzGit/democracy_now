@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom'
+
 import Dashboard from './components/Dashboard';
 import Home from './components/Home'
+import Login from './components/auth/Login'
+import PrivateRoute from './components/auth/PrivateRoute'
 
 class App extends Component {
   constructor(){
@@ -32,10 +35,10 @@ class App extends Component {
     .then(response => response.json())
     .then(apiData => {
       if (apiData.logged_in && !this.state.loggedInStatus){ 
-        this.setState({ loggedInStatus: true, user: apiData.user})
+        this.setState({ loggedInStatus: true, user: apiData.user}, () => console.log("Logged In", this.state))
       }
       else if (!apiData.logged_in && this.state.loggedInStatus){
-        this.setState({ loggedInStatus: false, user: {}})
+        this.setState({ loggedInStatus: false, user: {}}, () => console.log("Not Logged In", this.state))
       }
     })
   }
@@ -47,18 +50,28 @@ class App extends Component {
   render(){
     return (
       <div className="app">
+
+        <Route exact path={'/login'} component={Login}/>
+
         <Route 
+          exact path={'/dashboard'} 
+          render={props => (<Dashboard {...props} loggedInStatus={this.state.loggedInStatus} />)}/>
+
+        <PrivateRoute 
+          exact path={'/'} 
+          component={Home}
+          loggedInStatus={this.state.loggedInStatus}
+        />
+
+        {/* <Route 
           exact path={'/'} 
           render={props => (
             <Home {...props} 
             handleLogin={this.handleLogin} 
             handleLogout={this.handleLogout} 
             loggedInStatus={this.state.loggedInStatus} />)
-          }/>
+          }/> */}
 
-        <Route 
-          exact path={'/dashboard'} 
-          render={props => (<Dashboard {...props} loggedInStatus={this.state.loggedInStatus} />)}/>
       </div>
     );
   }
