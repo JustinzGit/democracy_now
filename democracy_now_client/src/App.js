@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import Home from './components/Home'
@@ -25,10 +25,13 @@ class App extends Component {
   }
   
   handleLogout = () => {
-    this.setState({
-      loggedInStatus: false, 
-      user: {}
-    })
+    fetch("http://localhost:3001/logout", {credentials: "include"})
+        .then(() => {
+            this.setState({ loggedInStatus: false, user: {} })
+        })
+        .catch(error => {
+            console.log("Logout Error", error)
+        })
   }
   
   loggedInStatus = () => {
