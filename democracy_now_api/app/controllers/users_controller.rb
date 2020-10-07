@@ -12,7 +12,7 @@ class UsersController < ApplicationController
         else
             render json: {
                 status: 500,
-                error: 'User could not be created'
+                error: user.errors.full_messages
             }
         end 
     end
