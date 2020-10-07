@@ -19,7 +19,7 @@ class Login extends Component {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify(userData)
+            body: JSON.stringify(this.state)
         })
         .then(response => response.json())
         .then(apiData => {
@@ -51,7 +51,7 @@ class Login extends Component {
         return(
             <div>
                 {this.state.error && <Error messages={this.state.error} /> }
-                
+
                 <form onSubmit={this.handleSubmit}>
                     <p>Email:
                     <input type="text" onChange={this.handleChange} name="email" value={this.state.email}></input></p>
