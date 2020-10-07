@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
         else
             render json: {
                 status: 401,
-                error: 'Incorrect email or password'
+                error: user.errors.full_messages
             }
         end 
     end
