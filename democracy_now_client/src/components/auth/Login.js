@@ -18,6 +18,10 @@ class Login extends Component {
         this.setState({ [event.target.name]: event.target.value })
     }
 
+    handleOnClick = () => {
+        this.props.history.push("/signup")
+    }
+
     render(){
         console.log("LOGIN = LOGIN WAS HIT")
         console.log("LOGIN = LOGGED IN STATUS", this.props.loggedInStatus)
@@ -36,6 +40,9 @@ class Login extends Component {
                     <input type="text" onChange={this.handleChange} name="password" value={this.state.password}></input></p>
 
                     <input type="submit" value="Login"></input>
+
+                    <p>Don't Have An Account?</p>
+                    <button onClick={this.handleOnClick}>SignUp</button>
                 </form>
             </div>
         )
