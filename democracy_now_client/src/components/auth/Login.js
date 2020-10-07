@@ -10,29 +10,8 @@ class Login extends Component {
     
     handleSubmit = (event) => {
         event.preventDefault()
-        fetch("http://localhost:3001/sessions", {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(this.state)
-        })
-        .then(response => response.json())
-        .then(apiData => {
-            if (apiData.status === 201){
-                console.log("LOGIN PROPS", this.props)
-                this.props.handleLogin(apiData.user)
-                this.props.history.push('/')
-            }
-            else {
-                console.log("Login Error", apiData.error)
-            }
-        })
-        .catch(error => {
-            console.log("Login Error", error)
-        })
+        this.props.handleLogin(this.state)
+        this.props.history.push("/")
     }
 
     handleChange = (event) => {
