@@ -19,29 +19,7 @@ class App extends Component {
   }
   
   handleLogin = (userData) => {
-    fetch("http://localhost:3001/sessions", {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(userData)
-        })
-        .then(response => response.json())
-        .then(apiData => {
-            if (apiData.status === 201){
-                console.log("LOGIN PROPS", this.props)
-                this.setState({ loggedInStatus: true, user: userData })
-                
-            }
-            else {
-                console.log("Login Error", apiData.error)
-            }
-        })
-        .catch(error => {
-            console.log("Login Error", error)
-        })
+    this.setState({ loggedInStatus: true, user: userData })
   }
   
   handleLogout = () => {

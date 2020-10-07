@@ -10,8 +10,26 @@ class Login extends Component {
     
     handleSubmit = (event) => {
         event.preventDefault()
-        this.props.handleLogin(this.state)
-        this.props.history.push("/")
+        fetch("http://localhost:3001/sessions", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(userData)
+        })
+        .then(response => response.json())
+        .then(apiData => {
+            if (apiData.status === 401){
+                this.setState({ ...this.state, error: apiData.error })
+                this.props.history.push("/login")
+            }
+            else {
+                this.props.handleLogin(this.state)
+                this.props.history.push("/")
+            }
+        })
     }
 
     handleChange = (event) => {
@@ -23,8 +41,6 @@ class Login extends Component {
     }
 
     render(){
-        console.log("LOGIN = LOGIN WAS HIT")
-        console.log("LOGIN = LOGGED IN STATUS", this.props.loggedInStatus)
 
         if (this.props.loggedInStatus){
             return <Redirect to={'/'} />
