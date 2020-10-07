@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Redirect } from "react-router-dom"
 // import { Redirect } from "react-router-dom"
 
 class Login extends Component {
@@ -21,6 +22,11 @@ class Login extends Component {
     render(){
         console.log("LOGIN = LOGIN WAS HIT")
         console.log("LOGIN = LOGGED IN STATUS", this.props.loggedInStatus)
+
+        if (this.props.loggedInStatus){
+            return <Redirect to={'/'} />
+        }
+
         return(
             <div>
                 <h3>{this.props.loggedInStatus ? "Logged In" : "Not Logged In"}</h3>
