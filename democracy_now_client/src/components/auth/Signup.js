@@ -25,13 +25,13 @@ class Signup extends Component {
             body: JSON.stringify(this.state)
         })
         .then(response => response.json())
-        .then(railsResp => {
-            if (railsResp.status === 500 ){
-                // populate error message in state
-                console.log(railsResp.error)
-            }
+        .then(apiData => {
+            if (apiData.status === 500 ){
+              this.setState({ ...this.state, error: "ERROR IN SIGNUP" })
+              this.props.history.push("/signup")
+            } 
             else {
-                this.props.handleAuth(railsResp.user)
+              this.props.handleSignup(this.state)
             }
         })
         .catch(error => {
@@ -44,8 +44,15 @@ class Signup extends Component {
     }
 
     render(){
+        let error
+        
+        if (this.state.error){
+            error = this.state.error
+        }
+
         return(
             <div>
+                <p>{error}</p>
                 <form onSubmit={this.handleSubmit}>
                     <p>Email:
                     <input type="text" onChange={this.handleChange} name="email" value={this.state.email}></input></p>

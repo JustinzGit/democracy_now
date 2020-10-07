@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom'
+import { Redirect, Route } from 'react-router-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import Home from './components/Home'
 import Login from './components/auth/Login'
+import Signup from './components/auth/Signup'
 import PrivateRoute from './components/auth/PrivateRoute';
 
 class App extends Component {
@@ -51,6 +52,10 @@ class App extends Component {
         .catch(error => {
             console.log("Logout Error", error)
         })
+  }
+
+  handleSignup = (userData) => {
+    this.setState({ loggedInStatus: true, user: userData })
   }
   
   loggedInStatus = () => {
@@ -104,11 +109,18 @@ class App extends Component {
 
           <Route
             exact path={'/login'}
-            render={(props)=> 
+            render={(props) => 
               <Login  {...props}
                 loggedInStatus={this.state.loggedInStatus}
                 handleLogin={this.handleLogin}/>} />
-              
+
+          <Route
+            exact path={'/signup'}
+            render={(props) => 
+              <Signup {...props}
+                handleSignup={this.handleSignup}
+                error={this.state.error} />} />
+
         </Router>
       </div>
       );
