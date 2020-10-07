@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import { Redirect } from "react-router-dom"
-// import { Redirect } from "react-router-dom"
 
 class Login extends Component {
 
@@ -29,7 +28,6 @@ class Login extends Component {
 
         return(
             <div>
-                <h3>{this.props.loggedInStatus ? "Logged In" : "Not Logged In"}</h3>
                 <form onSubmit={this.handleSubmit}>
                     <p>Email:
                     <input type="text" onChange={this.handleChange} name="email" value={this.state.email}></input></p>
