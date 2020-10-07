@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import Error from './Error'
 
 class Signup extends Component {
 
@@ -27,15 +28,13 @@ class Signup extends Component {
         .then(response => response.json())
         .then(apiData => {
             if (apiData.status === 500 ){
-              this.setState({ ...this.state, error: "ERROR IN SIGNUP" })
+              this.setState({ ...this.state, error: apiData.error })
               this.props.history.push("/signup")
             } 
-            else {
+            else if (apiData.status === 201 ) {
               this.props.handleSignup(this.state)
+              this.props.history.push("/")
             }
-        })
-        .catch(error => {
-            console.log("Signup Error", error)
         })
     }
 
@@ -44,15 +43,10 @@ class Signup extends Component {
     }
 
     render(){
-        let error
-        
-        if (this.state.error){
-            error = this.state.error
-        }
-
         return(
             <div>
-                <p>{error}</p>
+                {this.state.error && <Error messages={this.state.error} /> }
+
                 <form onSubmit={this.handleSubmit}>
                     <p>Email:
                     <input type="text" onChange={this.handleChange} name="email" value={this.state.email}></input></p>
