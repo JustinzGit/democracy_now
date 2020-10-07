@@ -12,7 +12,6 @@ class Home extends Component {
         return(
             <div>
                 <h1>Home Page</h1>
-                <h3>{this.props.loggedInStatus ? "Logged In" : "Not Logged In"}</h3>
                 <button onClick={this.handleLogoutClick}>Log Out</button>
             </div>
         )
