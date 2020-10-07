@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 
-// import Dashboard from './components/Dashboard';
 import Home from './components/Home'
 import Login from './components/auth/Login'
-// import PrivateRoute from './components/auth/PrivateRoute'
+import PrivateRoute from './components/auth/PrivateRoute';
 
 class App extends Component {
   constructor(){
@@ -63,8 +62,6 @@ class App extends Component {
     })
   }
   
-  // Call setState immediately
-  // "User wont see intermediate state"
   componentDidMount() {
     this.loggedInStatus()
   }
@@ -76,12 +73,11 @@ class App extends Component {
       return (
         <div className="app">
         <Router>
-          <Route 
-            exact path={'/'}
-            render={(props) => 
-              <Home {...props} 
-                loggedInStatus={this.state.loggedInStatus} 
-                handleLogout={this.handleLogout}/>} />
+          <PrivateRoute
+            exact path={'/'} 
+            component={Home}
+            loggedInStatus={this.state.loggedInStatus}
+            handleLogout={this.handleLogout} />
           
 
           <Route
@@ -90,6 +86,7 @@ class App extends Component {
               <Login  {...props}
                 loggedInStatus={this.state.loggedInStatus}
                 handleLogin={this.handleLogin}/>} />
+              
         </Router>
       </div>
       );
