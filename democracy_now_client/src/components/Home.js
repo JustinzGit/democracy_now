@@ -4,7 +4,6 @@ class Home extends Component {
 
     handleLogoutClick = () => {
         this.props.handleLogout()
-        this.props.history.push("/login")
     }
 
     render(){
