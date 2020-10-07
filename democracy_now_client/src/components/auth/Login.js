@@ -7,7 +7,7 @@ class Login extends Component {
 
     state = {
         email: "",
-        password: "",
+        password: ""
     }
     
     handleSubmit = (event) => {
@@ -27,7 +27,7 @@ class Login extends Component {
                 this.setState({ ...this.state, error: apiData.error })
                 this.props.history.push("/login")
             }
-            else {
+            else if (apiData.status === 201){
                 this.props.handleLogin(this.state)
                 this.props.history.push("/")
             }
