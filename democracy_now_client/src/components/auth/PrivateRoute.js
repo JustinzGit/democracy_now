@@ -3,8 +3,8 @@ import { Route, Redirect } from 'react-router-dom'
 
 const PrivateRoute = ({ loggedInStatus, component: Component, ...rest }) => {
     return(
-        <Route {...rest} render={(props) => (
-            loggedInStatus ? <Component {...props} /> : <Redirect to='/login' />
+        <Route render={(props) => (
+            loggedInStatus ? <Component loggedInStatus={loggedInStatus} {...props} {...rest}  /> : <Redirect to='/login' />
         )}/>
     )
 }
