@@ -10,16 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_02_194010) do
+ActiveRecord::Schema.define(version: 2020_10_08_142411) do
 
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
-    t.string "street_address"
-    t.string "city"
-    t.string "state"
-    t.string "zip_code"
-    t.string "country"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

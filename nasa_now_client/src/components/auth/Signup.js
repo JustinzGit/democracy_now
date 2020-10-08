@@ -6,12 +6,7 @@ class Signup extends Component {
     state = {
         email: "",
         password: "",
-        password_confirmation: "",
-        street_address: "",
-        city: "",
-        state: "",
-        zipcode: "",
-        country: ""
+        password_confirmation: ""
     }
 
     handleSubmit = (event) => {
@@ -60,21 +55,6 @@ class Signup extends Component {
 
                     <p>Password Confirmation:
                     <input type="text" onChange={this.handleChange} name="password_confirmation" value={this.state.password_confirmation}></input></p>
-
-                    <p>Street Address:
-                    <input type="text" onChange={this.handleChange} name="street_address" value={this.state.street_address}></input></p>
-
-                    <p>City:
-                    <input type="text" onChange={this.handleChange} name="city" value={this.state.city}></input></p>
-
-                    <p>State:
-                    <input type="text" onChange={this.handleChange} name="state" value={this.state.state}></input></p>
-
-                    <p>Zipcode:
-                    <input type="text" onChange={this.handleChange} name="zipcode" value={this.state.zipcode}></input></p>
-
-                    <p>Country:
-                    <input type="text" onChange={this.handleChange} name="country" value={this.state.country}></input></p>
 
                     <input type="submit" value="SignUp"></input>
 
