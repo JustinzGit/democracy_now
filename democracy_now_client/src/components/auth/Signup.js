@@ -42,6 +42,10 @@ class Signup extends Component {
         this.setState({ [event.target.name]: event.target.value})
     }
 
+    handleOnClick = () => {
+        this.props.history.push('/login')
+    }
+
     render(){
         return(
             <div>
@@ -73,6 +77,9 @@ class Signup extends Component {
                     <input type="text" onChange={this.handleChange} name="country" value={this.state.country}></input></p>
 
                     <input type="submit" value="SignUp"></input>
+
+                    <p>Already Have An Account?</p>
+                    <button onClick={this.handleOnClick}>Login</button>
                 </form>
             </div>
         )
