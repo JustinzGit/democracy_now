@@ -1,1 +1,1 @@
-Rails.application.config.session_store :cookie_store, key: '_democracy_now'
+Rails.application.config.session_store :cookie_store, key: '_nasa_now'

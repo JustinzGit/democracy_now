@@ -1,5 +1,5 @@
 {
-  "name": "democracy_now_api",
+  "name": "nasa_now_api",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
