@@ -7,8 +7,6 @@ class Home extends Component {
     }
 
     render(){
-        console.log("HOME = HOME WAS HIT")
-        console.log("HOME = Logged In Status:", this.props.loggedInStatus)
         return(
             <div>
                 <h1>Home Page</h1>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import Home from './components/Home'
@@ -12,9 +12,9 @@ class App extends Component {
     super()
   
     this.state = {
+      loadingComplete: false,
       loggedInStatus: false,
-      user: {},
-      loadingComplete: false
+      user: {}
     }
   }
   
@@ -43,26 +43,22 @@ class App extends Component {
       // IF LOGGED IN - API
       // IF NOT LOGGED IN VIA STATE
       if (apiData.logged_in && !this.state.loggedInStatus){
-        console.log("APP = (1) FETCH WAS HIT") 
-        this.setState({ loggedInStatus: true, user: apiData.user, loadingComplete: true }, () => console.log("Logged In Status", this.state))
+        this.setState({ loggedInStatus: true, user: apiData.user, loadingComplete: true })
       }
       // IF NOT LOGGED IN - API
       // IF LOGGED IN VIA STATE
       else if (!apiData.logged_in && this.state.loggedInStatus){
-        console.log("APP = (2) FETCH WAS HIT")
-        this.setState({ loggedInStatus: false, user: {}, loadingComplete: true }, () => console.log("Logged In Status", this.state))
+        this.setState({ loggedInStatus: false, user: {}, loadingComplete: true })
       }
       // IF LOGGED IN - API
       // IF LOGGED IN VIA STATE 
       else if (apiData.logged_in && this.state.loggedInStatus){
-        console.log("APP = (3) FETCH WAS HIT")
-        this.setState({ loggedInStatus: true, user: apiData.user, loadingComplete: true }, () => console.log("Logged In Status", this.state))
+        this.setState({ loggedInStatus: true, user: apiData.user, loadingComplete: true })
       }
       // IF NOT LOGGED IN API
       // IF NOT LOGGED IN VIA STATE
       else {
-        console.log("APP = (3) FETCH WAS HIT")
-        this.setState({ loggedInStatus: false, user: {}, loadingComplete: true }, () => console.log("Logged In Status", this.state))
+        this.setState({ loggedInStatus: false, user: {}, loadingComplete: true })
       }
     })
   }
@@ -73,8 +69,6 @@ class App extends Component {
   
   render(){
     if(this.state.loadingComplete){
-      console.log("APP = LOADING COMPLETE")
-      console.log("APP = LOGGED IN STATUS", this.state.loggedInStatus)
       return (
         <div className="app">
         <Router>
