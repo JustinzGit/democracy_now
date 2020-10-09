@@ -10,7 +10,7 @@ class Home extends Component {
         return(
             <div>
                 <h1>Home Page</h1>
-                <p><button onClick={() => this.props.history.push('/apod') }>Astrony Picture of the Day</button></p>
+                <p><button onClick={() => this.props.history.push('/apod') }>Astronomy Picture of the Day</button></p>
                 <p><button onClick={this.handleLogoutClick}>Log Out</button></p>
             </div>
         )
