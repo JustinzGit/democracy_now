@@ -10,4 +10,5 @@ Rails.application.routes.draw do
 
   # NASA Routes
   get 'nasa/apod/(:date)', to: 'nasa#apod'
+  get 'nasa/asteroids', to: 'nasa#asteroids'
 end
