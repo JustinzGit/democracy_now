@@ -25,4 +25,18 @@ class NasaController < ApplicationController
             }
         end 
     end 
+
+
+    def asteroids
+        asteroid_response = Nasa.get_asteroids()
+
+        if asteroid_response['element_count'] != 0
+            render json: {
+                status: 200,
+                links: asteroid_response['links'],
+                asteroid_count: asteroid_response['element_count'],
+                near_earth_objects: asteroid_response['near_earth_objects']
+            }
+        end 
+    end
 end 
