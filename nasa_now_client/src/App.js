@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import Home from './components/Home'
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
+import Apod from './components/nasa/Apod'
 import PrivateRoute from './components/auth/PrivateRoute';
 
 class App extends Component {
@@ -72,27 +73,32 @@ class App extends Component {
       return (
         <div className="app">
         <Router>
-          <PrivateRoute
-            exact path={'/'} 
-            component={Home}
-            loggedInStatus={this.state.loggedInStatus}
-            handleLogout={this.handleLogout} />
-          
+          <Switch>
+            <PrivateRoute
+              exact path={'/'} 
+              component={Home}
+              loggedInStatus={this.state.loggedInStatus}
+              handleLogout={this.handleLogout} />
 
-          <Route
-            exact path={'/login'}
-            render={(props) => 
-              <Login  {...props}
-                loggedInStatus={this.state.loggedInStatus}
-                handleLogin={this.handleLogin}/>} />
+            <PrivateRoute
+              exact path={'/apod'} 
+              component={Apod}
+              loggedInStatus={this.state.loggedInStatus} />
+            
+            <Route
+              exact path={'/login'}
+              render={(props) => 
+                <Login  {...props}
+                  loggedInStatus={this.state.loggedInStatus}
+                  handleLogin={this.handleLogin}/>} />
 
-          <Route
-            exact path={'/signup'}
-            render={(props) => 
-              <Signup {...props}
-                handleSignup={this.handleSignup}
-                error={this.state.error} />} />
-
+            <Route
+              exact path={'/signup'}
+              render={(props) => 
+                <Signup {...props}
+                  handleSignup={this.handleSignup}
+                  error={this.state.error} />} />
+          </Switch>
         </Router>
       </div>
       );
