@@ -7,4 +7,8 @@ class Nasa < ApplicationRecord
         response = JSON.parse response.body
     end
 
+    def self.get_asteroids()
+        response = Faraday.get "https://api.nasa.gov/neo/rest/v1/feed?&api_key=#{NASA_API_KEY}"
+        response = JSON.parse response.body
+    end 
 end
