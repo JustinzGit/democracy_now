@@ -5,8 +5,10 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import Home from './components/Home'
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
-import Apod from './components/nasa/Apod'
 import PrivateRoute from './components/auth/PrivateRoute';
+
+import Apod from './components/nasa/Apod'
+import Asteroids from './components/nasa/Asteroids'
 
 class App extends Component {
   constructor(){
@@ -83,6 +85,11 @@ class App extends Component {
             <PrivateRoute
               exact path={'/apod'} 
               component={Apod}
+              loggedInStatus={this.state.loggedInStatus} />
+
+            <PrivateRoute
+              exact path={'/asteroids'} 
+              component={Asteroids}
               loggedInStatus={this.state.loggedInStatus} />
             
             <Route
