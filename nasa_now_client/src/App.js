@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+import handleLogout from './actions/handleLogout'
+import handleLogin from './actions/handleLogin'
+import handleSignup from './actions/handleSignup'
+import currentLogin from './actions/currentLogin'
 
 import Home from './components/Home'
 import Login from './components/auth/Login'
@@ -11,67 +17,24 @@ import Apod from './components/nasa/Apod'
 import Asteroids from './components/nasa/Asteroids'
 
 class App extends Component {
-  constructor(){
-    super()
-  
-    this.state = {
-      loadingComplete: false,
-      loggedInStatus: false,
-      user: {}
-    }
-  }
-  
-  handleLogin = (userData) => {
-    this.setState({ loggedInStatus: true, user: userData })
-  }
-  
   handleLogout = () => {
-    fetch("http://localhost:3001/logout", {credentials: "include"})
-        .then(() => {
-            this.setState({ loggedInStatus: false, user: {} })
-        })
-        .catch(error => {
-            console.log("Logout Error", error)
-        })
+    this.props.handleLogout()
+  }
+
+  handleLogin = (userData) => {
+    this.props.handleLogin(userData)
   }
 
   handleSignup = (userData) => {
-    this.setState({ loggedInStatus: true, user: userData })
-  }
-  
-  loggedInStatus = () => {
-    fetch("http://localhost:3001/current_login", {credentials: "include"})
-    .then(response => response.json())
-    .then(apiData => {
-      // IF LOGGED IN - API
-      // IF NOT LOGGED IN VIA STATE
-      if (apiData.logged_in && !this.state.loggedInStatus){
-        this.setState({ loggedInStatus: true, user: apiData.user, loadingComplete: true })
-      }
-      // IF NOT LOGGED IN - API
-      // IF LOGGED IN VIA STATE
-      else if (!apiData.logged_in && this.state.loggedInStatus){
-        this.setState({ loggedInStatus: false, user: {}, loadingComplete: true })
-      }
-      // IF LOGGED IN - API
-      // IF LOGGED IN VIA STATE 
-      else if (apiData.logged_in && this.state.loggedInStatus){
-        this.setState({ loggedInStatus: true, user: apiData.user, loadingComplete: true })
-      }
-      // IF NOT LOGGED IN API
-      // IF NOT LOGGED IN VIA STATE
-      else {
-        this.setState({ loggedInStatus: false, user: {}, loadingComplete: true })
-      }
-    })
+    this.props.handleSignup(userData)
   }
   
   componentDidMount() {
-    this.loggedInStatus()
+    this.props.currentLogin()
   }
   
   render(){
-    if(this.state.loadingComplete){
+    if(!this.props.requestingData){
       return (
         <div className="app">
         <Router>
@@ -79,24 +42,24 @@ class App extends Component {
             <PrivateRoute
               exact path={'/'} 
               component={Home}
-              loggedInStatus={this.state.loggedInStatus}
+              loggedInStatus={this.props.loggedInStatus}
               handleLogout={this.handleLogout} />
 
             <PrivateRoute
               exact path={'/apod'} 
               component={Apod}
-              loggedInStatus={this.state.loggedInStatus} />
+              loggedInStatus={this.props.loggedInStatus} />
 
             <PrivateRoute
               exact path={'/asteroids'} 
               component={Asteroids}
-              loggedInStatus={this.state.loggedInStatus} />
+              loggedInStatus={this.props.loggedInStatus} />
             
             <Route
               exact path={'/login'}
               render={(props) => 
                 <Login  {...props}
-                  loggedInStatus={this.state.loggedInStatus}
+                  loggedInStatus={this.props.loggedInStatus}
                   handleLogin={this.handleLogin}/>} />
 
             <Route
@@ -116,4 +79,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    loggedInStatus: state.loggedInStatus,
+    requestingData: state.requestingData
+  }
+}
+
+export default connect( mapStateToProps , { handleLogout, handleSignup, currentLogin, handleLogin })(App);

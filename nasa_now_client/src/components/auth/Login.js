@@ -1,7 +1,9 @@
 import React, { Component } from "react"
 import { Redirect } from "react-router-dom"
+import { connect } from 'react-redux'
 
 import Error from './Error'
+// import handleLogin from '../../actions/handleLogin'
 
 class Login extends Component {
 
@@ -9,29 +11,9 @@ class Login extends Component {
         email: "",
         password: ""
     }
-    
-    handleSubmit = (event) => {
-        event.preventDefault()
-        fetch("http://localhost:3001/sessions", {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(this.state)
-        })
-        .then(response => response.json())
-        .then(apiData => {
-            if (apiData.status === 401){
-                this.setState({ ...this.state, error: apiData.error })
-                this.props.history.push("/login")
-            }
-            else if (apiData.status === 201){
-                this.props.handleLogin(this.state)
-                this.props.history.push("/")
-            }
-        })
+
+    handleSubmit = () => {
+        this.props.handleLogin(this.state)
     }
 
     handleChange = (event) => {
