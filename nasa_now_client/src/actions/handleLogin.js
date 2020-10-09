@@ -12,7 +12,6 @@ export default function handleLogin(userData){
         })
         .then(response => response.json())
         .then(apiData => {
-            console.log(apiData)
             if (apiData.status === 201){
                 return dispatch({ type: 'LOGIN', user: apiData.user })
             }
