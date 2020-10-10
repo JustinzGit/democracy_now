@@ -1,4 +1,6 @@
 import React, { Component } from "react"
+import { connect } from 'react-redux'
+import handleSignup from '../../actions/handleSignup'
 import Error from './Error'
 
 class Signup extends Component {
@@ -11,26 +13,7 @@ class Signup extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        fetch("http://localhost:3001/users", {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(this.state)
-        })
-        .then(response => response.json())
-        .then(apiData => {
-            if (apiData.status === 500 ){
-              this.setState({ ...this.state, error: apiData.error })
-              this.props.history.push("/signup")
-            } 
-            else if (apiData.status === 201 ) {
-              this.props.handleSignup(this.state)
-              this.props.history.push("/")
-            }
-        })
+        this.props.handleSignup()
     }
 
     handleChange = (event) => {
@@ -42,6 +25,11 @@ class Signup extends Component {
     }
 
     render(){
+
+        if (this.props.loggedInStatus){
+            return <Redirect to={'/'} />
+        }
+
         return(
             <div>
                 {this.state.error && <Error messages={this.state.error} /> }
@@ -66,4 +54,4 @@ class Signup extends Component {
     }
 }
 
-export default Signup
+export default connect(state => ({ loggedInStatus: state.loggedInStatus }), { handleSignup })(Signup)
