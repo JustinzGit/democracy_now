@@ -13,8 +13,8 @@ class ApodContainer extends Component {
         this.props.fetchApod()
     }
 
-    setDate = (userDate) => {
-        this.setState({ dateInput: userDate })
+    setDate = (event) => {
+        this.setState({ dateInput: event.target.value })
     }
 
     handleSubmit = () => {
