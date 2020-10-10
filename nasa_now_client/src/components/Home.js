@@ -1,9 +1,8 @@
 import React from 'react'
-
-
+import { connect } from 'react-redux'
+import handleLogout from '../actions/handleLogout'
 
 const Home = ({ handleLogout }) => {
-    
     return(
         <div>
             <h1>Home Page</h1>
@@ -12,4 +11,4 @@ const Home = ({ handleLogout }) => {
     )
 }
 
-export default Home
+export default connect(null, { handleLogout })(Home)

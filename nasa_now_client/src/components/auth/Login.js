@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom"
 import { connect } from 'react-redux'
 
 import Error from './Error'
-// import handleLogin from '../../actions/handleLogin'
+import handleLogin from '../../actions/handleLogin'
 
 class Login extends Component {
 
@@ -51,4 +51,4 @@ class Login extends Component {
     }
 }
 
-export default Login
+export default connect(state => ({ loggedInStatus: state.loggedInStatus }), { handleLogin })(Login)
