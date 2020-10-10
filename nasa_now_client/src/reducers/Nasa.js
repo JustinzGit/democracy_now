@@ -1,7 +1,12 @@
 export default function Nasa(
     state = {
         requestingData: false,
-        astronomyPic: {},
+        astronomyPic: {
+            date: "",
+            title: "",
+            hdurl: "",
+            explanation: ""
+        },
         asteroids: {}
     },
     action){
@@ -10,7 +15,7 @@ export default function Nasa(
         case 'START_APOD_REQUEST':
             return {
                 ...state,
-                astronomyPic: {...state.astronomy_pic},
+                astronomyPic: {...state.astronomyPic},
                 requestingData: true
             }
         
