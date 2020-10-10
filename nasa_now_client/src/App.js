@@ -12,6 +12,7 @@ import Home from './components/Home'
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
 import PrivateRoute from './components/auth/PrivateRoute';
+import NavBar from './components/NavBar'
 
 import Apod from './components/nasa/Apod'
 import Asteroids from './components/nasa/Asteroids'
@@ -38,6 +39,9 @@ class App extends Component {
       return (
         <div className="app">
         <Router>
+
+          {this.props.loggedInStatus && <NavBar />}
+
           <Switch>
             <PrivateRoute
               exact path={'/'} 
@@ -68,6 +72,7 @@ class App extends Component {
                 <Signup {...props}
                   handleSignup={this.handleSignup}
                   error={this.state.error} />} />
+
           </Switch>
         </Router>
       </div>
