@@ -1,8 +1,8 @@
 import React, { Component } from "react"
 import { connect } from 'react-redux'
 import { Redirect } from "react-router-dom"
-import handleSignup from '../../actions/handleSignup'
-import Error from './Error'
+import handleSignup from '../../actions/auth/handleSignup'
+// import Error from './Error'
 
 class Signup extends Component {
 
@@ -33,7 +33,7 @@ class Signup extends Component {
 
         return(
             <div>
-                {this.state.error && <Error messages={this.state.error} /> }
+                {/* {this.state.error && <Error messages={this.state.error} /> } */}
 
                 <form onSubmit={this.handleSubmit}>
                     <p>Email:
@@ -55,4 +55,4 @@ class Signup extends Component {
     }
 }
 
-export default connect(state => ({ loggedInStatus: state.loggedInStatus }), { handleSignup })(Signup)
+export default connect(state => ({ loggedInStatus: state.user.loggedInStatus }), { handleSignup })(Signup)
