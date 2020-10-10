@@ -2,8 +2,8 @@ import React, { Component } from "react"
 import { Redirect } from "react-router-dom"
 import { connect } from 'react-redux'
 
-import Error from './Error'
-import handleLogin from '../../actions/handleLogin'
+// import Error from './Error'
+import handleLogin from '../../actions/auth/handleLogin'
 
 class Login extends Component {
 
@@ -32,7 +32,7 @@ class Login extends Component {
 
         return(
             <div>
-                {this.state.error && <Error messages={this.state.error} /> }
+                {/* {this.state.error && <Error messages={this.state.error} /> } */}
 
                 <form onSubmit={this.handleSubmit}>
                     <p>Email:
@@ -51,4 +51,4 @@ class Login extends Component {
     }
 }
 
-export default connect(state => ({ loggedInStatus: state.loggedInStatus }), { handleLogin })(Login)
+export default connect(state => ({ loggedInStatus: state.user.loggedInStatus }), { handleLogin })(Login)
