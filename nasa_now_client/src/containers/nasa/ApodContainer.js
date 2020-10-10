@@ -22,10 +22,10 @@ class ApodContainer extends Component {
     }
 
     render(){
-        if(!this.state.requestingData){
+        if(!this.props.requestingData){
             return(
                 <div>
-                    <Apod astronomyPic={this.state.astronomyPic} />
+                    <Apod astronomyPic={this.props.astronomyPic} />
                     
                     <form onSubmit={this.handleSubmit}>
                         <p>Select a date to view NASA's astronomy picture on that date</p>
