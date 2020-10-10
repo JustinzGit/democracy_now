@@ -2,34 +2,21 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
 
 import { connect } from 'react-redux'
-
-import handleLogout from './actions/handleLogout'
-import handleLogin from './actions/handleLogin'
-import handleSignup from './actions/handleSignup'
 import currentLogin from './actions/currentLogin'
+import handleLogout from './actions/handleLogout'
 
 import Home from './components/Home'
+import NavBar from './components/NavBar'
+
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
 import PrivateRoute from './components/auth/PrivateRoute';
-import NavBar from './components/NavBar'
 
 import Apod from './components/nasa/Apod'
 import Asteroids from './components/nasa/Asteroids'
 
 class App extends Component {
-  handleLogout = () => {
-    this.props.handleLogout()
-  }
 
-  handleLogin = (userData) => {
-    this.props.handleLogin(userData)
-  }
-
-  handleSignup = (userData) => {
-    this.props.handleSignup(userData)
-  }
-  
   componentDidMount() {
     this.props.currentLogin()
   }
@@ -61,6 +48,8 @@ class App extends Component {
               exact path={'/signup'}
               component={Signup} />
           </Switch>
+
+          {this.props.loggedInStatus && <p><button onClick={this.props.handleLogout}>Log Out</button></p>}
       </div>
       );
     }
@@ -77,4 +66,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect( mapStateToProps , { handleLogout, handleSignup, currentLogin, handleLogin })(App);
+export default connect( mapStateToProps , { handleLogout, currentLogin })(App);
