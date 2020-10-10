@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
 
 import { connect } from 'react-redux'
-import currentLogin from './actions/currentLogin'
-import handleLogout from './actions/handleLogout'
+import currentLogin from './actions/auth/currentLogin'
+import handleLogout from './actions/auth/handleLogout'
 
 import Home from './components/Home'
 import NavBar from './components/NavBar'
@@ -12,7 +12,8 @@ import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
 import PrivateRoute from './components/auth/PrivateRoute';
 
-import Apod from './components/nasa/Apod'
+// import Apod from './components/nasa/Apod'
+import ApodContainer from './containers/nasa/ApodContainer'
 import Asteroids from './components/nasa/Asteroids'
 
 class App extends Component {
@@ -34,7 +35,7 @@ class App extends Component {
 
             <PrivateRoute
               exact path={'/apod'} 
-              component={Apod} />
+              component={ApodContainer} />
 
             <PrivateRoute
               exact path={'/asteroids'} 
@@ -61,8 +62,8 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    loggedInStatus: state.loggedInStatus,
-    requestingData: state.requestingData
+    loggedInStatus: state.user.loggedInStatus,
+    requestingData: state.user.requestingData
   }
 }
 
