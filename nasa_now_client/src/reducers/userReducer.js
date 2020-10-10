@@ -16,7 +16,6 @@ export default function userReducer(
             }
 
         case 'LOGIN':
-            console.log("CASE - WAS HIT")
             return {
                 ...state, 
                 user: action.user, 
