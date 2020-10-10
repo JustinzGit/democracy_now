@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
+
 import { connect } from 'react-redux'
 
 import handleLogout from './actions/handleLogout'
@@ -38,33 +38,24 @@ class App extends Component {
     if(!this.props.requestingData){
       return (
         <div className="app">
-        <Router>
-
           {this.props.loggedInStatus && <NavBar />}
 
           <Switch>
             <PrivateRoute
               exact path={'/'} 
-              component={Home}
-              loggedInStatus={this.props.loggedInStatus}
-              handleLogout={this.handleLogout} />
+              component={Home} />
 
             <PrivateRoute
               exact path={'/apod'} 
-              component={Apod}
-              loggedInStatus={this.props.loggedInStatus} />
+              component={Apod} />
 
             <PrivateRoute
               exact path={'/asteroids'} 
-              component={Asteroids}
-              loggedInStatus={this.props.loggedInStatus} />
+              component={Asteroids} />
             
             <Route
               exact path={'/login'}
-              render={(props) => 
-                <Login  {...props}
-                  loggedInStatus={this.props.loggedInStatus}
-                  handleLogin={this.handleLogin}/>} />
+              component={Login} />
 
             <Route
               exact path={'/signup'}
@@ -74,7 +65,6 @@ class App extends Component {
                   error={this.state.error} />} />
 
           </Switch>
-        </Router>
       </div>
       );
     }
