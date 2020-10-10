@@ -10,4 +10,4 @@ const PrivateRoute = ({ loggedInStatus, component: Component, ...rest }) => {
     )
 }
 
-export default connect(state => ({ loggedInStatus: state.loggedInStatus }))(PrivateRoute)
+export default connect(state => ({ loggedInStatus: state.user.loggedInStatus }))(PrivateRoute)
