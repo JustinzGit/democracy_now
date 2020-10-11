@@ -5,6 +5,7 @@ import Apod from '../../components/nasa/Apod'
 import fetchApod from '../../actions/nasa/fetchApod'
 import NavBar from '../../components/NavBar'
 import LogoutButton from '../../components/LogoutButton'
+import Loading from '../../components/Loading'
 import { Button } from 'react-bootstrap'
 
 class ApodContainer extends Component {
@@ -42,7 +43,7 @@ class ApodContainer extends Component {
                 )
         }
         else{
-            return(<div><h1>Loading Astronomy Picture of the Day</h1></div>)
+            return(<div><Loading pageName={"Astronomy Picture of the Day"}/></div>)
         }
         
     }

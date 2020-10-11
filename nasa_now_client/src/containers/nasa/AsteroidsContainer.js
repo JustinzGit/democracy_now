@@ -5,6 +5,7 @@ import fetchAsteroids from '../../actions/nasa/fetchAsteroids'
 import Asteroids from '../../components/nasa/Asteroids'
 import NavBar from '../../components/NavBar'
 import LogoutButton from '../../components/LogoutButton'
+import Loading from '../../components/Loading'
 
 class AsteroidsContainer extends Component {    
     componentDidMount(){
@@ -22,7 +23,7 @@ class AsteroidsContainer extends Component {
             )
         }
         else{
-            return(<div><h1>Loading Asteroid Data</h1></div>)
+            return(<div><Loading pageName={"Today's Asteroids"}/></div>)
         }
         
     }
