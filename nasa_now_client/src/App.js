@@ -15,6 +15,8 @@ import Signup from './components/auth/Signup'
 import ApodContainer from './containers/nasa/ApodContainer'
 import AsteroidsContainer from './containers/nasa/AsteroidsContainer';
 
+import {Container, Row, Col } from 'react-bootstrap'
+
 class App extends Component {
 
   componentDidMount() {
@@ -25,32 +27,38 @@ class App extends Component {
     if(!this.props.requestingData){
       return (
         <div className="app">
-          {this.props.loggedInStatus && <NavBar />}
+          <Container>
+            <Row>
+              <Col>
+                {this.props.loggedInStatus && <NavBar />}
 
-          <Switch>
-            <PrivateRoute
-              exact path={'/'} 
-              component={Home} />
+                <Switch>
+                  <PrivateRoute
+                    exact path={'/'} 
+                    component={Home} />
 
-            <PrivateRoute
-              exact path={'/apod'} 
-              component={ApodContainer} />
+                  <PrivateRoute
+                    exact path={'/apod'} 
+                    component={ApodContainer} />
 
-            <PrivateRoute
-              exact path={'/asteroids'} 
-              component={AsteroidsContainer} />
-            
-            <Route
-              exact path={'/login'}
-              component={Login} />
+                  <PrivateRoute
+                    exact path={'/asteroids'} 
+                    component={AsteroidsContainer} />
+                  
+                  <Route
+                    exact path={'/login'}
+                    component={Login} />
 
-            <Route
-              exact path={'/signup'}
-              component={Signup} />
-          </Switch>
+                  <Route
+                    exact path={'/signup'}
+                    component={Signup} />
+                </Switch>
 
-          {this.props.loggedInStatus && <p><button onClick={this.props.handleLogout}>Log Out</button></p>}
-      </div>
+                {this.props.loggedInStatus && <p><button onClick={this.props.handleLogout}>Log Out</button></p>}
+              </Col>
+            </Row>
+          </Container>
+        </div>
       );
     }
     else {
