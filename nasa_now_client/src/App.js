@@ -6,7 +6,6 @@ import currentLogin from './actions/auth/currentLogin'
 import handleLogout from './actions/auth/handleLogout'
 
 import Home from './components/Home'
-import NavBar from './components/NavBar'
 import PrivateRoute from './components/PrivateRoute';
 
 import Login from './components/auth/Login'
@@ -30,8 +29,6 @@ class App extends Component {
           <Container>
             <Row>
               <Col>
-                {this.props.loggedInStatus && <NavBar />}
-
                 <Switch>
                   <PrivateRoute
                     exact path={'/'} 
