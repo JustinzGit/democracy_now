@@ -7,7 +7,7 @@ export default function nasaReducer(
             hdurl: "",
             explanation: ""
         },
-        asteroids: {}
+        asteroids: []
     },
     action){
     
@@ -23,6 +23,20 @@ export default function nasaReducer(
             return {
                 ...state,
                 astronomyPic: action.astronomyPic,
+                requestingData: false
+            }
+
+        case 'START_ASTEROIDS_REQUEST':
+            return {
+                ...state,
+                asteroids: [...state.asteroids],
+                requestingData: true
+            }
+
+        case 'ACQUIRE_ASTEROIDS':
+            return {
+                ...state,
+                asteroids: action.currentAsteroids,
                 requestingData: false
             }
         
