@@ -5,6 +5,7 @@ import Apod from '../../components/nasa/Apod'
 import fetchApod from '../../actions/nasa/fetchApod'
 import NavBar from '../../components/NavBar'
 import LogoutButton from '../../components/LogoutButton'
+import { Button } from 'react-bootstrap'
 
 class ApodContainer extends Component {
     state = {
@@ -31,9 +32,9 @@ class ApodContainer extends Component {
                     <Apod astronomyPic={this.props.astronomyPic} />
                     
                     <form onSubmit={this.handleSubmit}>
-                        <p>Select a date to view NASA's astronomy picture on that date</p>
+                        <p><b>View NASA's astronomy picture on a selected date</b></p>
                         <input onChange={this.setDate} type="date"></input>
-                        <p><input type="submit" value="Get Picture"></input></p>
+                        <p><Button id="get_pic_btn" variant="primary" type="submit">Get Picture</ Button></p>
                     </form>
 
                     <LogoutButton />
