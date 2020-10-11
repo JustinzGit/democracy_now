@@ -26,7 +26,7 @@ class App extends Component {
     if(!this.props.requestingData){
       return (
         <div className="app">
-          <Container>
+          <Container fluid>
             <Row>
               <Col>
                 <Switch>
