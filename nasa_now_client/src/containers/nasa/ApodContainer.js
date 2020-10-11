@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import Apod from '../../components/nasa/Apod'
 import fetchApod from '../../actions/nasa/fetchApod'
+import NavBar from '../../components/NavBar'
 
 class ApodContainer extends Component {
     state = {
@@ -25,6 +26,7 @@ class ApodContainer extends Component {
         if(!this.props.requestingData){
             return(
                 <div>
+                    <NavBar />
                     <Apod astronomyPic={this.props.astronomyPic} />
                     
                     <form onSubmit={this.handleSubmit}>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import fetchAsteroids from '../../actions/nasa/fetchAsteroids'
 import Asteroids from '../../components/nasa/Asteroids'
+import NavBar from '../../components/NavBar'
 
 class AsteroidsContainer extends Component {    
     componentDidMount(){
@@ -13,6 +14,7 @@ class AsteroidsContainer extends Component {
         if(!this.props.requestingData){
             return(
                 <div>
+                    <NavBar />
                     <Asteroids asteroids={this.props.asteroids} />
                 </div>
             )
