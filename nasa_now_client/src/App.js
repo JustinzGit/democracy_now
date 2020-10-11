@@ -12,9 +12,8 @@ import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
 import PrivateRoute from './components/auth/PrivateRoute';
 
-// import Apod from './components/nasa/Apod'
 import ApodContainer from './containers/nasa/ApodContainer'
-import Asteroids from './components/nasa/Asteroids'
+import AsteroidsContainer from './containers/nasa/AsteroidsContainer';
 
 class App extends Component {
 
@@ -39,7 +38,7 @@ class App extends Component {
 
             <PrivateRoute
               exact path={'/asteroids'} 
-              component={Asteroids} />
+              component={AsteroidsContainer} />
             
             <Route
               exact path={'/login'}
