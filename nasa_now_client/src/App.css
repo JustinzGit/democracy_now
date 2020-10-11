@@ -75,3 +75,22 @@
     border-radius: 10px;
 
 }
+
+#apod h1 {
+    margin-top: 20px;
+}
+
+#astronomy_pic {
+    margin-top: 30px;
+}
+
+#apod p {
+    margin-top: 10px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#get_pic_btn {
+    margin-top: 10px;
+}
