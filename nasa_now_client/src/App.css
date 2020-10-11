@@ -1,4 +1,38 @@
-.container {
-    justify-content: center;
+.container-fluid {
+    background-color:rgb(11,61,145);
     text-align: center;
+}
+
+.row {
+    min-height: 100vh;
+}
+
+.col {
+    background-color:white;
+    
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 10px;
+    border-color: rgb(252,61,33);
+
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+#home a {
+    font-size: 20px;
+    
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#home div {
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
