@@ -14,7 +14,7 @@ import Signup from './components/auth/Signup'
 import ApodContainer from './containers/nasa/ApodContainer'
 import AsteroidsContainer from './containers/nasa/AsteroidsContainer';
 
-import {Container, Row, Col } from 'react-bootstrap'
+import {Container, Row, Col, Button } from 'react-bootstrap'
 
 class App extends Component {
 
@@ -51,7 +51,7 @@ class App extends Component {
                     component={Signup} />
                 </Switch>
 
-                {this.props.loggedInStatus && <p><button onClick={this.props.handleLogout}>Log Out</button></p>}
+                {this.props.loggedInStatus && <Button onClick={this.props.handleLogout} variant="dark">Log Out</Button>}
               </Col>
             </Row>
           </Container>
