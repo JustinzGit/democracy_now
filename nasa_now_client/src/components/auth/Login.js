@@ -3,7 +3,9 @@ import { Redirect } from "react-router-dom"
 import { connect } from 'react-redux'
 
 // import Error from './Error'
+import NasaLogo from '../NasaLogo'
 import handleLogin from '../../actions/auth/handleLogin'
+import { Form, Button } from 'react-bootstrap'
 
 class Login extends Component {
 
@@ -31,21 +33,22 @@ class Login extends Component {
         }
 
         return(
-            <div>
+            <div id="login">
                 {/* {this.state.error && <Error messages={this.state.error} /> } */}
+                <NasaLogo />
+                <Form onSubmit={this.handleSubmit}>
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control type="text" onChange={this.handleChange} name="email" value={this.state.email}/>
 
-                <form onSubmit={this.handleSubmit}>
-                    <p>Email:
-                    <input type="text" onChange={this.handleChange} name="email" value={this.state.email}></input></p>
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="text" onChange={this.handleChange} name="password" value={this.state.password}/>
 
-                    <p>Password:
-                    <input type="text" onChange={this.handleChange} name="password" value={this.state.password}></input></p>
-
-                    <input type="submit" value="Login"></input>
+                    <Button id="login_btn" variant="primary" type="submit">Login</Button>
 
                     <p>Don't Have An Account?</p>
-                    <button onClick={this.handleOnClick}>SignUp</button>
-                </form>
+           
+                    <Button variant="primary" onClick={this.handleOnClick}>SignUp</Button>
+                </ Form>
             </div>
         )
     }
