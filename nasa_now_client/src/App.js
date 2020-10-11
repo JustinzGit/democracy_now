@@ -14,7 +14,7 @@ import Signup from './components/auth/Signup'
 import ApodContainer from './containers/nasa/ApodContainer'
 import AsteroidsContainer from './containers/nasa/AsteroidsContainer';
 
-import {Container, Row, Col, Button } from 'react-bootstrap'
+import {Container, Row, Col } from 'react-bootstrap'
 
 class App extends Component {
 
@@ -24,6 +24,7 @@ class App extends Component {
   
   render(){
     if(!this.props.requestingData){
+      let button = <button onClick={this.props.handleLogout}>Log Out</button>
       return (
         <div className="app">
           <Container fluid>
@@ -50,8 +51,6 @@ class App extends Component {
                     exact path={'/signup'}
                     component={Signup} />
                 </Switch>
-
-                {this.props.loggedInStatus && <Button onClick={this.props.handleLogout} variant="dark">Log Out</Button>}
               </Col>
             </Row>
           </Container>
