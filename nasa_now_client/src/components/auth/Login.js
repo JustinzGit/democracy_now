@@ -33,7 +33,7 @@ class Login extends Component {
         }
 
         return(
-            <div id="login">
+            <div class="form">
                 {/* {this.state.error && <Error messages={this.state.error} /> } */}
                 <NasaLogo />
                 <Form onSubmit={this.handleSubmit}>
