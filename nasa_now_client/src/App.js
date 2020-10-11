@@ -7,10 +7,10 @@ import handleLogout from './actions/auth/handleLogout'
 
 import Home from './components/Home'
 import NavBar from './components/NavBar'
+import PrivateRoute from './components/PrivateRoute';
 
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
-import PrivateRoute from './components/auth/PrivateRoute';
 
 import ApodContainer from './containers/nasa/ApodContainer'
 import AsteroidsContainer from './containers/nasa/AsteroidsContainer';
