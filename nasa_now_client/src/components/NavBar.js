@@ -6,7 +6,7 @@ const NavBar = ({ currentPath }) => {
     <div className="navbar">
         <NavLink to="/">Home</NavLink>
         {currentPath !== "/apod" && <NavLink to="/apod">Astronomy Pic of the Day</NavLink>}
-        {currentPath !== "/asteroids" && <NavLink to="/asteroids">Discover Asteroids</NavLink>}
+        {currentPath !== "/asteroids" && <NavLink to="/asteroids">Today's Asteroids</NavLink>}
     </div>
   );
 };
