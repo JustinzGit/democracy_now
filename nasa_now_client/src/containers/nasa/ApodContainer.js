@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Apod from '../../components/nasa/Apod'
 import fetchApod from '../../actions/nasa/fetchApod'
 import NavBar from '../../components/NavBar'
+import LogoutButton from '../../components/LogoutButton'
 
 class ApodContainer extends Component {
     state = {
@@ -34,6 +35,8 @@ class ApodContainer extends Component {
                         <input onChange={this.setDate} type="date"></input>
                         <p><input type="submit" value="Get Picture"></input></p>
                     </form>
+
+                    <LogoutButton />
                 </div>
                 )
         }
