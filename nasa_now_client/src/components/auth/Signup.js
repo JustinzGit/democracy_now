@@ -43,10 +43,10 @@ class Signup extends Component {
                     <Form.Control type="text" onChange={this.handleChange} name="email" value={this.state.email}/>
 
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="text" onChange={this.handleChange} name="password" value={this.state.password}/>
+                    <Form.Control type="password" onChange={this.handleChange} name="password" value={this.state.password}/>
 
                     <Form.Label>Password Confirmation</Form.Label>
-                    <Form.Control  type="text" onChange={this.handleChange} name="password_confirmation" value={this.state.password_confirmation}/>
+                    <Form.Control  type="password" onChange={this.handleChange} name="password_confirmation" value={this.state.password_confirmation}/>
 
                     <Button id="signup_btn" variant="primary" type="submit">Sign Up</Button>
 

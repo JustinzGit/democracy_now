@@ -41,7 +41,7 @@ class Login extends Component {
                     <Form.Control type="text" onChange={this.handleChange} name="email" value={this.state.email}/>
 
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="text" onChange={this.handleChange} name="password" value={this.state.password}/>
+                    <Form.Control type="password" onChange={this.handleChange} name="password" value={this.state.password}/>
 
                     <Button id="login_btn" variant="primary" type="submit">Login</Button>
 
