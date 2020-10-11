@@ -15,7 +15,7 @@ class AsteroidsContainer extends Component {
         if(!this.props.requestingData){
             return(
                 <div>
-                    <NavBar />
+                    <NavBar currentPath={this.props.history.location.pathname}/>
                     <Asteroids asteroids={this.props.asteroids} />
                     <LogoutButton />
                 </div>

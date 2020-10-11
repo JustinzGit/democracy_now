@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const NavBar = () => {
+const NavBar = ({ currentPath }) => {
   return (
     <div className="navbar">
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/apod">Astronomy Pic of the Day</NavLink>
-        <NavLink to="/asteroids">Discover Asteroids</NavLink>
+        {currentPath !== "/apod" && <NavLink to="/apod">Astronomy Pic of the Day</NavLink>}
+        {currentPath !== "/asteroids" && <NavLink to="/asteroids">Discover Asteroids</NavLink>}
     </div>
   );
 };

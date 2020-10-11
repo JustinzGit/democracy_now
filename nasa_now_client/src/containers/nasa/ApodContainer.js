@@ -27,7 +27,7 @@ class ApodContainer extends Component {
         if(!this.props.requestingData){
             return(
                 <div>
-                    <NavBar />
+                    <NavBar currentPath={this.props.history.location.pathname}/>
                     <Apod astronomyPic={this.props.astronomyPic} />
                     
                     <form onSubmit={this.handleSubmit}>
