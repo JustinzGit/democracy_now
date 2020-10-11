@@ -41,20 +41,20 @@
     margin-bottom: 20px;
 }
 
-#login {
+.form {
     margin-top: 50px;
 }
 
-#login input {
+.form input {
     max-width: 250px;
     margin-left: auto;
     margin-right: auto;
 } 
 
-#login label {
+.form label {
     margin-top: 15px;
 }
 
-#login_btn {
+#login_btn, #signup_btn {
     margin-top: 10px;
 }
