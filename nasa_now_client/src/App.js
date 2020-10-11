@@ -7,6 +7,7 @@ import handleLogout from './actions/auth/handleLogout'
 
 import Home from './components/Home'
 import PrivateRoute from './components/PrivateRoute';
+import Loading from './components/Loading'
 
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
@@ -58,7 +59,17 @@ class App extends Component {
       );
     }
     else {
-      return(<div className="app">Loading Data</div>)
+      return(
+        <div className="app">
+          <Container fluid>
+            <Row>
+              <Col>
+                <Loading pageName={"NASA NOW"}/>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+        )
     }
   }
 }
