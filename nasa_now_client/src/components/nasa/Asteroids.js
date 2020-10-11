@@ -3,9 +3,10 @@ import AsteroidCard from './AsteroidCard'
 
 const Asteroids = ({ asteroids }) => {
     return(
-        <div>
-            <h1>Asteroids - (Near Earth Object Web Service)</h1>
-            <p>There are a total of {asteroids.length} asteroids approaching Earth today</p>
+        <div id="asteroids">
+            <h1>Today's Asteroids</h1>
+            <h3>(Near Earth Object Web Service)</h3>
+            <h4>There are a total of {asteroids.length} asteroids approaching Earth today</h4>
             {asteroids.map((data, id) => <AsteroidCard key={id} asteroidData={data} />)}
         </div>
     )
