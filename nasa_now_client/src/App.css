@@ -94,3 +94,18 @@
 #get_pic_btn {
     margin-top: 10px;
 }
+
+#card {
+    margin: 5px;
+    font-size: 15px;
+    width: 300px;
+    display: inline-block;
+}
+
+.card-text, .card-title {
+    text-align: left;
+}
+
+.card-header {
+    background-color: blue;
+}
