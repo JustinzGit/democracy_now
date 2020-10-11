@@ -2,7 +2,6 @@ import React from 'react'
 import AsteroidCard from './AsteroidCard'
 
 const Asteroids = ({ asteroids }) => {
-    console.log(asteroids)
     return(
         <div>
             <h1>Asteroids - (Near Earth Object Web Service)</h1>
