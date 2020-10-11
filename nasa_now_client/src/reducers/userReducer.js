@@ -11,7 +11,6 @@ export default function userReducer(
         case 'START_LOGIN_REQUEST':
             return {
                 ...state, 
-                user: {...state.user}, 
                 requestingData: true
             }
 
@@ -26,7 +25,6 @@ export default function userReducer(
         case 'START_LOGOUT_REQUEST':
             return {
                 ...state, 
-                user: {...state.user}, 
                 requestingData: true
             }
 
@@ -41,7 +39,6 @@ export default function userReducer(
         case 'START_SIGNUP_REQUEST':
             return {
                 ...state,
-                user: {...state.user},
                 requestingData: true
             }
             
@@ -56,7 +53,6 @@ export default function userReducer(
         case 'ACQUIRING_CURRENT_LOGIN':
             return {
                 ...state,
-                user: {...state.user},
                 requestingData: true
             }
 

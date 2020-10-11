@@ -15,7 +15,6 @@ export default function nasaReducer(
         case 'START_APOD_REQUEST':
             return {
                 ...state,
-                astronomyPic: {...state.astronomyPic},
                 requestingData: true
             }
         
@@ -29,7 +28,6 @@ export default function nasaReducer(
         case 'START_ASTEROIDS_REQUEST':
             return {
                 ...state,
-                asteroids: [...state.asteroids],
                 requestingData: true
             }
 
