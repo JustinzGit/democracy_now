@@ -9,10 +9,6 @@ class AsteroidsContainer extends Component {
         this.props.fetchAsteroids()
     }
 
-    setDate = (event) => {
-        this.setState({ astroidDate: event.target.value })
-    }
-
     render(){
         if(!this.props.requestingData){
             return(
