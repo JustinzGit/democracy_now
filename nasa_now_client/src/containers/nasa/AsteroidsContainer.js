@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { DateTime } from "luxon"
 import { connect } from 'react-redux'
 
 import fetchAsteroids from '../../actions/nasa/fetchAsteroids'
