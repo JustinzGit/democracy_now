@@ -58,3 +58,20 @@
 #login_btn, #signup_btn {
     margin-top: 10px;
 }
+
+.navbar a {
+    color: white;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navbar {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    background-color: lightcoral;
+    border-radius: 10px;
+
+}
