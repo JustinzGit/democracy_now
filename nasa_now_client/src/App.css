@@ -40,3 +40,21 @@
 .btn {
     margin-bottom: 20px;
 }
+
+#login {
+    margin-top: 50px;
+}
+
+#login input {
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+} 
+
+#login label {
+    margin-top: 15px;
+}
+
+#login_btn {
+    margin-top: 10px;
+}
