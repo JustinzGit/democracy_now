@@ -2,9 +2,11 @@ export default function nasaReducer(
     state = {
         requestingData: false,
         astronomyPic: {
+            url: "",
             date: "",
-            title: "",
             hdurl: "",
+            title: "",
+            media_type: "",
             explanation: ""
         },
         asteroids: []

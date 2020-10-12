@@ -9,9 +9,11 @@ export default function fetchApod(dateInput=""){
                     type: 'ACQUIRE_APOD', 
                     
                     astronomyPic: { 
+                        url: apiData.url,
                         date: apiData.date, 
-                        title: apiData.title, 
                         hdurl: apiData.hdurl, 
+                        title: apiData.title, 
+                        media_type: apiData.media_type,
                         explanation: apiData.explanation 
                     }})
             }
