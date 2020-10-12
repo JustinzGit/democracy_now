@@ -35,9 +35,10 @@ class Signup extends Component {
         }
 
         return(
-            <div class="form">
-                {/* {this.state.error && <Error messages={this.state.error} /> } */}
+            <div id="signup">
                 <NasaLogo />
+                <div class="form">
+                {/* {this.state.error && <Error messages={this.state.error} /> } */}
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Label>Email</Form.Label>
                     <Form.Control type="text" onChange={this.handleChange} name="email" value={this.state.email}/>
@@ -53,6 +54,7 @@ class Signup extends Component {
                     <p>Already Have An Account?</p>
                     <Button onClick={this.handleOnClick}>Login</Button>
                 </ Form>
+            </div>
             </div>
         )
     }
