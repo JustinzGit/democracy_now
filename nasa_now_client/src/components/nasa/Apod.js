@@ -2,6 +2,15 @@ import React from 'react'
 import { DateTime } from "luxon"
 
 const Apod = ({ astronomyPic }) => {
+
+    let todaysMedia
+    if (astronomyPic.media_type === "video"){
+        todaysMedia = <iframe width="630" height="472" src={astronomyPic.url}></iframe>
+    }
+    else {
+        todaysMedia = <img alt="nasa_apod" src={astronomyPic.hdurl} style={{maxWidth: "50%", width: 'auto', height: 'auto'}} ></img>
+    }
+
     return(
         <div id="apod">
             <h1>Astronomy Picture of the Day</h1>
@@ -9,7 +18,7 @@ const Apod = ({ astronomyPic }) => {
             
             <div id="astronomy_pic">
                 <h3>{astronomyPic.title}</h3>
-                <img alt="nasa_apod" src={astronomyPic.hdurl} style={{maxWidth: "100%", width: 1000, height: 'auto'}} ></img>
+                {todaysMedia}
             </div>
             
             <p>{astronomyPic.explanation}</p> 
