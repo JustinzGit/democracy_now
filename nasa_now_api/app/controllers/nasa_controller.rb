@@ -17,10 +17,12 @@ class NasaController < ApplicationController
         else
             render json: {
                 status: 200,
+                media_type: apod_response['media_type'],
                 date: apod_response['date'],
                 title: apod_response['title'],
                 copyright: apod_response['copyright'],
                 hdurl: apod_response['hdurl'],
+                url: apod_response['url'],
                 explanation: apod_response['explanation'] 
             }
         end 
