@@ -5,7 +5,7 @@ const Apod = ({ astronomyPic }) => {
 
     let todaysMedia
     if (astronomyPic.media_type === "video"){
-        todaysMedia = <iframe width="630" height="472" src={astronomyPic.url}></iframe>
+        todaysMedia = <iframe title="nasa video" width="630" height="472" src={astronomyPic.url}></iframe>
     }
     else {
         todaysMedia = <img alt="nasa_apod" src={astronomyPic.hdurl} style={{maxWidth: "50%", width: 'auto', height: 'auto'}} ></img>
