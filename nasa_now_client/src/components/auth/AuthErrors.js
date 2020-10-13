@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Error = ({messages}) => {
+const AuthErrors = ({messages}) => {
     return (
         <div>
             <h3>Error!</h3>
@@ -9,4 +9,4 @@ const Error = ({messages}) => {
     )
 }
 
-export default Error
+export default AuthErrors
