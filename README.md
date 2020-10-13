@@ -4,6 +4,10 @@ Currently, users can sign up and view information on nearby asteroids and NASAs 
 
 # Installation
 - Fork and clone this repository
+- Be sure to have RubyGems installed (Ruby version 1.9+ comes with RubyGems by default)
+- Be sure to have Rails installed (Rails 6.0.3.1+) [Rails Guide](https://guides.rubyonrails.org/v5.0/getting_started.html)
+- Install the ruby gem bundler by running `gem install bundler` from the command line 
+- In folder `nasa_now_api` install application dependencies by running `bundle install`
 - In folder `nasa_now_api` run `rails s -p 3001` to start a rails server on port 3001
 - In folder `nasa_now_client` run `npm install && npm start` to install dependencies and view the application within a browser
 
