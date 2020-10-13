@@ -12,7 +12,7 @@ export default function handleLogin(userData){
         })
         .then(response => response.json())
         .then(apiData => {
-            if (apiData.status === 201){
+            if (apiData.status === 200){
                 return dispatch({ type: 'LOGIN', user: apiData.user })
             }
         })
