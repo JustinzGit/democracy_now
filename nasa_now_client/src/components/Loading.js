@@ -3,7 +3,7 @@ import { Spinner } from 'react-bootstrap'
 
 const Loading = ({ pageName }) => {
     return(
-        <div>
+        <div id="loading_page">
             <h1>Loading {pageName}</h1>
             <Spinner animation="border" variant="primary"/>
         </div>
