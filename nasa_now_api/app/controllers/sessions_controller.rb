@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id
             render json: {
                 status: 201,
-                logged_in: true,
                 user: user
             }
         else
@@ -19,10 +18,7 @@ class SessionsController < ApplicationController
     
     def logout
         reset_session
-        render json: {
-            status: 200,
-            logged_in: false
-        }
+        render json: { status: 200 }
     end
 
     def current_login
