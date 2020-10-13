@@ -20,7 +20,8 @@ export default function userReducer(
                 ...state, 
                 user: action.user, 
                 requestingData: false,
-                loggedInStatus: true
+                loggedInStatus: true,
+                authErrors: []
             }
 
         case 'START_LOGOUT_REQUEST':
