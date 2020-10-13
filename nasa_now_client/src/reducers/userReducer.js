@@ -1,7 +1,8 @@
 export default function userReducer(
     state = {
         requestingData: false,
-        loggedInStatus: false, 
+        loggedInStatus: false,
+        authErrors: [], 
         user: {}
     }, 
     action){
@@ -47,7 +48,8 @@ export default function userReducer(
                 ...state,
                 user: action.user,
                 requestingData: false,
-                loggedInStatus: true
+                loggedInStatus: true,
+                authErrors: []
             }
 
         case 'ACQUIRING_CURRENT_LOGIN':
@@ -62,6 +64,13 @@ export default function userReducer(
                 user: action.user,
                 requestingData: false,
                 loggedInStatus: action.loggedInStatus
+            }
+
+        case 'POPULATE_AUTH_ERRORS':
+            return {
+                ...state,
+                requestingData: false,
+                authErrors: action.errors
             }
 
         default:
