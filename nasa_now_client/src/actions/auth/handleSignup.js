@@ -15,7 +15,9 @@ export default function handleSignup(userData){
             if (apiData.status === 201){
                 return dispatch({ type: 'SIGNUP', user: apiData.user })
             }
+            else if (apiData.status === 500){
+                return dispatch({ type: 'POPULATE_AUTH_ERRORS', errors: apiData.error })
+            }
         })
-
     }
 }
