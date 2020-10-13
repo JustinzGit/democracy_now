@@ -33,7 +33,7 @@ class Login extends Component {
         }
 
         return(
-            <div class="form">
+            <div className="form">
                 <NasaLogo />
                 {this.props.authErrors.length !== 0 && <AuthErrors messages={this.props.authErrors} /> }
                 <Form onSubmit={this.handleSubmit}>
