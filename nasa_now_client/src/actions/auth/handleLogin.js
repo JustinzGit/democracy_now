@@ -15,6 +15,9 @@ export default function handleLogin(userData){
             if (apiData.status === 200){
                 return dispatch({ type: 'LOGIN', user: apiData.user })
             }
+            else if (apiData.status === 401){
+                return dispatch({ type: 'POPULATE_AUTH_ERRORS', errors: apiData.error})
+            }
         })
     }
 }
