@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { connect } from 'react-redux'
 import { Redirect } from "react-router-dom"
 
-// import Error from './Error'
+import AuthErrors from './AuthErrors'
 import handleSignup from '../../actions/auth/handleSignup'
 import { Form, Button } from 'react-bootstrap'
 import NasaLogo from '../NasaLogo'
@@ -17,7 +17,7 @@ class Signup extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        this.props.handleSignup()
+        this.props.handleSignup(this.state)
     }
 
     handleChange = (event) => {
@@ -38,7 +38,7 @@ class Signup extends Component {
             <div id="signup">
                 <NasaLogo />
                 <div class="form">
-                {/* {this.state.error && <Error messages={this.state.error} /> } */}
+                {this.props.authErrors.length !== 0 && <AuthErrors messages={this.props.authErrors} /> }
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Label>Email</Form.Label>
                     <Form.Control type="text" onChange={this.handleChange} name="email" value={this.state.email}/>
@@ -60,4 +60,11 @@ class Signup extends Component {
     }
 }
 
-export default connect(state => ({ loggedInStatus: state.user.loggedInStatus }), { handleSignup })(Signup)
+const mapStateToProps = (state) => {
+    return {
+        loggedInStatus: state.user.loggedInStatus,
+        authErrors: state.user.authErrors
+    }
+}
+
+export default connect( mapStateToProps , { handleSignup })(Signup)
