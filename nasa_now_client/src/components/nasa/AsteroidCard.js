@@ -2,10 +2,18 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 import { DateTime } from "luxon"
 
-const AsteroidCard = ({ asteroidData }) => {   
+const AsteroidCard = ({ asteroidData }) => {
+    let approachTime 
     let approachDateTime = asteroidData.close_approach_data[0].close_approach_date_full
-    let approachTime = approachDateTime.split(" ")[1]
-    approachTime = DateTime.fromISO(approachTime).toFormat('t')
+
+    if (approachDateTime){
+        approachTime = approachDateTime.split(" ")[1]
+        approachTime = DateTime.fromISO(approachTime).toFormat('t')
+    }
+    else {
+        approachTime = "N/A"
+    }
+    
 
     return(
         <div id="card">
