@@ -1,5 +1,5 @@
 {
-  "proxy": "nasa-now-backend.herokuapp.com",
+  "proxy": "https://nasa-now-backend.herokuapp.com",
   "name": "nasa_now_client",
   "version": "0.1.0",
   "private": true,
