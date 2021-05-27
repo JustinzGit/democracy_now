@@ -1,7 +1,7 @@
 export default function handleSignup(userData){
     return (dispatch) => {
         dispatch({ type: 'START_SIGNUP_REQUEST'})
-        fetch("http://localhost:3001/users", {
+        fetch("/users", {
             method: "POST",
             credentials: "include",
             headers: {
