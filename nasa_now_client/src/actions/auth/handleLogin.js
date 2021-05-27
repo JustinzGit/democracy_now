@@ -1,7 +1,7 @@
 export default function handleLogin(userData){
     return (dispatch) => {
         dispatch({ type: 'START_LOGIN_REQUEST'})
-        fetch("/sessions", {
+        fetch("https://nasa-now-backend.herokuapp.com/sessions", {
             method: "POST",
             credentials: "include",
             headers: {

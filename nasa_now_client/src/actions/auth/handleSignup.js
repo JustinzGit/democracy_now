@@ -1,7 +1,7 @@
 export default function handleSignup(userData){
     return (dispatch) => {
         dispatch({ type: 'START_SIGNUP_REQUEST'})
-        fetch("/users", {
+        fetch("https://nasa-now-backend.herokuapp.com/users", {
             method: "POST",
             credentials: "include",
             headers: {

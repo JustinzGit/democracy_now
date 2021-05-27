@@ -1,7 +1,7 @@
 export default function currentLogin(){
     return (dispatch) => {
         dispatch({ type: 'ACQUIRING_CURRENT_LOGIN'})
-        fetch("/current_login", { credentials: "include" })
+        fetch("https://nasa-now-backend.herokuapp.com/current_login", { credentials: "include" })
         .then(response => response.json())
         .then(apiData => {
             if (apiData.logged_in){
