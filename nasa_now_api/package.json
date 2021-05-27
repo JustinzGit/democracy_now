@@ -9,7 +9,7 @@
     "turbolinks": "^5.2.0"
   },
   "scripts": {
-    "publishToHeroku": "cd ../ && git subtree push --prefix nasa_now_api heroku-nasa-now-backend main || true"
+    "publishToHeroku": "cd ../ && git subtree push --prefix nasa_now_api heroku-app-backend main || true"
   },
   "version": "0.1.0",
   "devDependencies": {
